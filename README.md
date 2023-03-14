@@ -1,4 +1,4 @@
-# 3D Video Game physics
+# 2D Video Game physics
 
 ## 2D physics for particle
 
