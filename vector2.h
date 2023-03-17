@@ -10,4 +10,7 @@ typedef struct {
     float y;
 } Vector2;
 
+void Negate(Vector2*);
+
+
 #endif //INC_2D_PHYSICS_VECTOR2_H

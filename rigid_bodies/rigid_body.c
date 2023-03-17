@@ -2,22 +2,14 @@
 // Created by beloin on 11/03/23.
 //
 
-#include "vector2.h"
+#include "../vector2.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
+#include "rigid_body.h"
 
 #define NUM_RIGID_BODIES 1
-
-// List of moments of inertia: https://en.wikipedia.org/wiki/List_of_moments_of_inertia
-typedef struct BoxShape {
-    float width;
-    float height;
-    float mass;
-    float moment_of_inertia;
-} BoxShape;
-
 
 void CalculateBoxInertia(BoxShape *boxShape) {
     float d_height = boxShape->height * boxShape->height;
@@ -29,35 +21,21 @@ void CalculateBoxInertia(BoxShape *boxShape) {
     boxShape->moment_of_inertia = m_inertia;
 }
 
-typedef struct {
-    Vector2 position;
-    Vector2 linear_velocity;
-
-    float angle;
-    float angular_velocity;
-
-    Vector2 force;
-    float torque;
-
-    // This means we can use a container of box shapes to use our "design"
-    BoxShape shape;
-} RigidBody;
-
-RigidBody rigid_bodies[NUM_RIGID_BODIES];
+BoxRigidBody rigid_bodies[NUM_RIGID_BODIES];
 
 void PrintRigidBodies() {
     for (int i = 0; i < NUM_RIGID_BODIES; ++i) {
-        RigidBody *rigid_body = &rigid_bodies[i];
+        BoxRigidBody *rigid_body = &rigid_bodies[i];
         float xp = rigid_body->position.x;
         float yp = rigid_body->position.y;
         float angle = rigid_body->angle;
-        printf("RigidBody[%i] p = {%.2f, %.2f}, a = %.2f\n", i, xp, yp, angle);
+        printf("BoxRigidBody[%i] p = {%.2f, %.2f}, a = %.2f\n", i, xp, yp, angle);
     }
 }
 
 void InitializeRigidBodies() {
     for (int i = 0; i < NUM_RIGID_BODIES; ++i) {
-        RigidBody *rigid_body = &rigid_bodies[i];
+        BoxRigidBody *rigid_body = &rigid_bodies[i];
         rigid_body->position = (Vector2) {(float) arc4random_uniform(50), (float) arc4random_uniform(50)};
         rigid_body->angle = (float) (((float) arc4random_uniform(360)) / 360 * M_PI * 2); // y = (x*2pi)/360
         rigid_body->linear_velocity = (Vector2) {0, 0};
@@ -73,8 +51,8 @@ void InitializeRigidBodies() {
     }
 }
 
-void ComputeForceAndTorque(RigidBody *rigid_body) {
-    Vector2 force = (Vector2) {0, 100}; // 100 Newtons of force
+void ComputeForceAndTorque(BoxRigidBody *rigid_body) {
+    Vector2 force = (Vector2) {0, 100}; // 100 Newtons of force just to test
     rigid_body->force = force;
 
     // Using an "arm vector"
@@ -94,7 +72,7 @@ void runRigidBodiesSimulation() {
         sleep(dt);
 
         for (int i = 0; i < NUM_RIGID_BODIES; ++i) {
-            RigidBody *rigidBody = &rigid_bodies[i];
+            BoxRigidBody *rigidBody = &rigid_bodies[i];
             ComputeForceAndTorque(rigidBody);
             Vector2 linearAcceleration = (Vector2) {rigidBody->force.x / rigidBody->shape.mass,
                                                     rigidBody->force.y / rigidBody->shape.mass};

@@ -9,28 +9,35 @@ p(ti+1) = p(ti) + v(ti+1)dt
 
 ## 2D Physics for Rigid Body
 
-
 ### Position and Mass properties
 
-Center of Mass: 
-$\frac{m_i*r_i}{M}$  
+Center of Mass:
+$\frac{m_i*r_i}{M}$
 
-If the density of the figure is uniform, 
+If the density of the figure is uniform,
 then the center of mass is the same as the
 geometric center also known as centroid.
 
 Since rigid body are continues through the particles, we should not
-use a discrete equation, but use an integral to calculate the Center of mass 
+use a discrete equation, but use an integral to calculate the Center of mass
 of a Rigid Body:  
-$\frac{1}{M} \int_v p(r)r\, dv$  
+$\frac{1}{M} \int_v p(r)r\, dv$
 
 Where r is the position of each point ,p is a function that gives the density
 at each point within the body (there's the [v]olume part)
 
 ### Angular Properties
 
-Since we only have to worry about one dimension of rotation 
+Since we only have to worry about one dimension of rotation
 (the one which points out to the screen), to simplify the calculations
 we will be using 0->$\pi$
 
 // Todo: For swarm Engine, create a beautiful README.md
+
+Use trees to have logarithmic time query!
+
+Dynamic Bounding Volume Trees:
+
+- We have AABB children and parent, we will put it into a Binary Tree,
+  so whenever we need to test if something are hitting the children, we will test
+  first if it is hitting the parent.

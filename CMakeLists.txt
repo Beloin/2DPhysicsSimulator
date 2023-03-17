@@ -6,12 +6,12 @@ set(CMAKE_C_STANDARD 11)
 add_executable(
         2d_physics
         particles/particle.c
-        rigid_body.c vector2.h
+        rigid_bodies/rigid_body.c vector2.h
         interface/interface.c particle_utils.h
         particles/particle.h
         interface/interface.h
         main.c
-)
+        rigid_bodies/rigid_body.h colision_detect/colision_detector.c vector.c)
 
 find_library(MATH_LIBRARY m)
 if(MATH_LIBRARY)
