@@ -59,3 +59,4 @@ bool checkForCollision(Vector2 *vertexA, int sizeA, Vector2 *vertexB, int sizeB)
     Negate(&negated);
     Vector2 newDirection = negated;
 }
+

@@ -11,7 +11,7 @@ add_executable(
         particles/particle.h
         interface/interface.h
         main.c
-        rigid_bodies/rigid_body.h colision_detect/colision_detector.c vector.c)
+        rigid_bodies/rigid_body.h colision_detect/colision_detector.c vector.c colision_detect/aabb.c colision_detect/aabb.h)
 
 find_library(MATH_LIBRARY m)
 if(MATH_LIBRARY)

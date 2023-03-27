@@ -24,7 +24,7 @@ of a Rigid Body:
 $\frac{1}{M} \int_v p(r)r\, dv$
 
 Where r is the position of each point ,p is a function that gives the density
-at each point within the body (there's the [v]olume part)
+at each point within the body (there's the [v]olume part).
 
 ### Angular Properties
 
@@ -32,12 +32,13 @@ Since we only have to worry about one dimension of rotation
 (the one which points out to the screen), to simplify the calculations
 we will be using 0->$\pi$
 
-// Todo: For swarm Engine, create a beautiful README.md
 
-Use trees to have logarithmic time query!
+## Collisions
 
-Dynamic Bounding Volume Trees:
+For sake of simplicity, we will not be using any advanced methods, like SAT or DBVT.
 
-- We have AABB children and parent, we will put it into a Binary Tree,
-  so whenever we need to test if something are hitting the children, we will test
-  first if it is hitting the parent.
+The method we are using is the `Axis Aligned Bounding Boxes` that can be calculated using `AABBvsAABB` function.
+
+We simply check if one Axis-Aligned box is inside another Axis-Aligned Box:
+
+<img src="/resources/AABB.png" alt="AABB showcase"/>

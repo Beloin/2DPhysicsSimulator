@@ -9,6 +9,7 @@
 
 // List of moments of inertia: https://en.wikipedia.org/wiki/List_of_moments_of_inertia
 // TODO: Try to implement another one
+//  Add AABB struct to check for collisions...
 typedef struct BoxShape {
     float width;
     float height;
@@ -32,6 +33,7 @@ typedef struct {
 
     // This means we can use a container of box shapes to use our "design"
     BoxShape shape;
+    // TODO: Use a AABB to check for collisions... And update each time we move the position.
 } BoxRigidBody;
 
 #endif //INC_2D_PHYSICS_RIGID_BODY_H
