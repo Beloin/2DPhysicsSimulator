@@ -26,13 +26,6 @@ $\frac{1}{M} \int_v p(r)r\, dv$
 Where r is the position of each point ,p is a function that gives the density
 at each point within the body (there's the [v]olume part).
 
-### Angular Properties
-
-Since we only have to worry about one dimension of rotation
-(the one which points out to the screen), to simplify the calculations
-we will be using 0->$\pi$
-
-
 ## Collisions
 
 For sake of simplicity, we will not be using any advanced methods, like SAT or DBVT.
